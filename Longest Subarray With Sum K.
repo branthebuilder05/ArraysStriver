@@ -1,0 +1,27 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+	public static int getLongestSubarray(int []nums, int k) {
+		// Write your code here.
+		return solve(nums,k);
+	}
+	public static int solve(int arr[],int k){
+	HashMap<Integer,Integer> map = new HashMap<>();
+	map.put(0,0);
+	int i=0,j=0,sum=0,len=0;
+	while(j<arr.length){
+	sum+=arr[j];
+	if(map.containsKey(sum-k))	
+		len=Math.max(len,j-map.get(sum-k));
+	if(map.containsKey(sum-k)==false)
+		map.put(sum, j);
+	//get or def working agar phle se hai to get uska val de dega. 
+	//ex phle se hai with val 3 so 3 de dega and we increment 3 to 4.
+	//agar ni hai phle se to 0 dega. 0+1 kar denge then.
+j++;
+}
+return len;
+
+
+	}
+}
